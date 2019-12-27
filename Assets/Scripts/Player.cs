@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	private Rigidbody body;
+	public GameManager gameManager;
 
 	public float speed = 3f;
 
@@ -15,6 +16,11 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
+		if (gameManager.isGameOver)
+		{
+			return;
+		}
+
 		float x = Input.GetAxis("Horizontal");
 		float y = body.velocity.y;
 		float z = Input.GetAxis("Vertical");
