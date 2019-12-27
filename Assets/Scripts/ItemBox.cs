@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ItemBox : MonoBehaviour
 {
-	private Renderer renderer;
+	private MeshRenderer renderer;
 
+	public bool isOverlaped = false;
 	public Color originalColor;
-	public Color changedColor;
+	public Color changedColor = Color.white;
 
 	private void Start()
 	{
-		renderer = GetComponent<Renderer>();
+		renderer = GetComponent<MeshRenderer>();
 		originalColor = renderer.material.color;
 	}
 
@@ -19,6 +20,7 @@ public class ItemBox : MonoBehaviour
 	{
 		if (other.tag == "EndPoint")
 		{
+			isOverlaped = true;
 			renderer.material.color = changedColor;
 		}
 	}
@@ -27,6 +29,7 @@ public class ItemBox : MonoBehaviour
 	{
 		if (other.tag == "EndPoint")
 		{
+			isOverlaped = true;
 			renderer.material.color = changedColor;
 		}
 	}
@@ -35,6 +38,7 @@ public class ItemBox : MonoBehaviour
 	{
 		if (other.tag == "EndPoint")
 		{
+			isOverlaped = false;
 			renderer.material.color = originalColor;
 		}
 	}
