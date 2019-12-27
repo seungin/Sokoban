@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	public ItemBox[] itemBoxes;
 	public bool isGameOver = false;
+	public GameObject gameOverUI;
 
 	private void Update()
 	{
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 		if (overlapedCount == itemBoxes.Length)
 		{
 			isGameOver = true;
+			gameOverUI.SetActive(true);
 			Debug.Log("Game Clear!");
 		}
 	}
